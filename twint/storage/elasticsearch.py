@@ -290,7 +290,7 @@ def Tweet(Tweet, config):
     if not _index_tweet_status:
         _index_tweet_status = createIndex(config, es, scope="tweet")
     with nostdout():
-        helpers.bulk(es, actions, chunk_size=2000, request_timeout=200)
+        helpers.bulk(es, actions, chunk_size=2000, request_timeout=200, raise_on_error=False)
     actions = []
 
 def Follow(user, config):
@@ -318,7 +318,7 @@ def Follow(user, config):
     if not _index_follow_status:
         _index_follow_status = createIndex(config, es, scope="follow")
     with nostdout():
-        helpers.bulk(es, actions, chunk_size=2000, request_timeout=200)
+        helpers.bulk(es, actions, chunk_size=2000, request_timeout=200, raise_on_error=False)
     actions = []
 
 def UserProfile(user, config):
