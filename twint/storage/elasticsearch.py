@@ -360,5 +360,5 @@ def UserProfile(user, config):
     if not _index_user_status:
         _index_user_status = createIndex(config, es, scope="user")
     with nostdout():
-        helpers.bulk(es, actions, chunk_size=2000, request_timeout=200)
+        helpers.bulk(es, actions, chunk_size=2000, request_timeout=200, raise_on_error=False)
     actions = []
